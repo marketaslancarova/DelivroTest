@@ -52,7 +52,7 @@ docker compose up --build
 | Klíč       | Hodnota                 |
 | ---------- | ----------------------- |
 | URL        | `http://localhost:9001` |
-| Access Key | `minio`                 |
-| Secret Key | `minio12345`            |
+| User       | `minio`                 |
+| Password   | `minio12345`            |
 | Bucket     | `invoices`              |
 
