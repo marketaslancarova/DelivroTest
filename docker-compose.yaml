@@ -26,7 +26,7 @@ services:
     volumes:
       - minio_data:/data
 
-  # === AUTOMATICKÉ VYTVOŘENÍ BUCKETU "invoices" ===
+  # === AUTOMATICKÉ VYTVOŘENÍ BUCKETU ===
   minio-init:
     image: minio/mc
     restart: "no"
@@ -40,7 +40,7 @@ services:
         mc mb --ignore-existing local/invoices;
       "
 
-  # === BACKEND (Express + Prisma) ===
+  # === BACKEND ===
   backend:
     build: ./backend
     restart: unless-stopped
@@ -60,13 +60,9 @@ services:
       - "4000:4000"
     working_dir: /app
 
-    # 🔴 TADY JE DŮLEŽITÉ:
-    # 1) vygeneruj Prisma clienta
-    # 2) aplikuj migrace
-    # 3) spusť server
     command: sh -c "npx prisma generate && npx prisma migrate deploy && npm run dev"
 
-  # === FRONTEND (Next.js) ===
+  # === FRONTEND ===
   frontend:
     build:
       context: ./frontend
