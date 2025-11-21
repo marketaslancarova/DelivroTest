@@ -2,7 +2,6 @@ export const messages = {
   en: {
     dashboard: {
       title: "Delivro – Shipments & Invoices",
-      subtitle: "Overview of all shipments and carrier invoices in one place.",
 
       filterPlaceholder: "Filter by company…",
       noShipments:
@@ -94,8 +93,6 @@ export const messages = {
   cs: {
     dashboard: {
       title: "Delivro – zásilky a faktury",
-      subtitle: "Přehled všech zásilek a faktur od dopravců na jednom místě.",
-
       filterPlaceholder: "Filtrovat podle firmy…",
       noShipments:
         "Žádné zásilky neodpovídají filtru. Změň filtr nebo nahraj nové faktury.",

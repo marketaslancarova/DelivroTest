@@ -53,9 +53,6 @@ export default function DashboardPage() {
             <h1 className="text-2xl font-semibold text-slate-900">
               {t("dashboard.title")}
             </h1>
-            <p className="text-sm text-slate-500 mt-1">
-              {t("dashboard.subtitle")}
-            </p>
           </div>
 
           <div className="flex items-center gap-3">
