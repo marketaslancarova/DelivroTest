@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+enum Provider {
+  GLS
+  DPD
+  UPS
+  PPL
+  FedEx
+}
+
+enum ShipmentMode {
+  IMPORT
+  EXPORT
+}
+
+model Company {
+  id        String    @id       
+  name      String               
+
+  shipments Shipment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([name])
+}
+
+model Shipment {
+  id                 String       @id   
+  jsonCreatedAt      DateTime           
+  trackingNumber     String
+  provider           Provider
+  mode               ShipmentMode
+  originCountry      String
+  destinationCountry String
+
+  companyId String
+  company   Company     @relation(fields: [companyId], references: [id])
+
+  invoices  Invoice[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([companyId])
+  @@index([trackingNumber])
+  @@index([provider])
+}
+
+model Invoice {
+  id             String      @id             
+  invoicedWeight Decimal     @db.Decimal(10,2)
+  invoicedPrice  Int
+  uploadedAt     DateTime    @default(now()) 
+
+  shipmentId String
+  shipment   Shipment   @relation(fields: [shipmentId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@index([shipmentId, uploadedAt])
+}
