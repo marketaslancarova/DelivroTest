@@ -3,9 +3,6 @@ import { z } from "zod";
 export const providerSchema = z.enum(["GLS", "DPD", "UPS", "PPL", "FedEx"]);
 export const shipmentModeSchema = z.enum(["IMPORT", "EXPORT"]);
 
-/* -----------------------------
-   Invoice JSON validation
--------------------------------- */
 export const invoiceRecordSchema = z.object({
   id: z.string().min(1),
   shipment: z.object({
@@ -28,10 +25,6 @@ export const invoiceRecordSchema = z.object({
 export const invoiceArraySchema = z.array(invoiceRecordSchema);
 
 export type InvoiceRecordJson = z.infer<typeof invoiceRecordSchema>;
-
-/* -----------------------------
-   Shipments Query validation (routa)
--------------------------------- */
 
 export const shipmentsQuerySchema = z.object({
   page: z.string().optional(),

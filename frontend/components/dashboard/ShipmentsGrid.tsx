@@ -15,7 +15,6 @@ export function ShipmentsGrid({
 }: ShipmentsGridProps) {
   const { t } = useI18n();
 
-  // Loading state
   if (isLoading) {
     return (
       <div className="mb-4 text-sm text-slate-500">
@@ -24,7 +23,6 @@ export function ShipmentsGrid({
     );
   }
 
-  // Error state
   if (error) {
     return (
       <div className="mb-4 flex items-center justify-between rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm">
@@ -36,7 +34,6 @@ export function ShipmentsGrid({
     );
   }
 
-  // Empty state
   if (shipments.length === 0) {
     return (
       <div className="col-span-full rounded-2xl bg-white border border-dashed border-slate-200 p-6 text-center text-sm text-slate-500">
@@ -45,7 +42,6 @@ export function ShipmentsGrid({
     );
   }
 
-  // Normal grid
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
       {shipments.map((s) => (

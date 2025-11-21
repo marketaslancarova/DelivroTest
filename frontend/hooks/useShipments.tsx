@@ -72,7 +72,6 @@ export function useShipments() {
   };
 
   return {
-    // filters state
     companyFilter,
     setCompanyFilter,
     selectedDate,
@@ -80,7 +79,6 @@ export function useShipments() {
     sortOrder,
     setSortOrder,
 
-    // data state
     shipments,
     loading,
     error,
@@ -88,14 +86,12 @@ export function useShipments() {
     total,
     totalPages,
 
-    // history state
     historyOpen,
     setHistoryOpen,
     historyShipment,
     setHistoryShipment,
     openHistoryForShipment,
 
-    //  data loading
     loadShipments,
   };
 }

@@ -28,8 +28,6 @@ export type ShipmentsGridProps = {
   onShowHistory: (shipment: ShipmentFromApi) => void;
 };
 
-// src/lib/ui.types.ts
-
 export type PreviewRow = {
   id: string;
   trackingNumber: string;
